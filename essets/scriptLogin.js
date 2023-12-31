@@ -86,7 +86,7 @@ async function validatePass(userName, password) {
         // Wrap the jQuery AJAX call in a Promise
         const data = await new Promise((resolve, reject) => {
             $.ajax({
-                url: 'https://database-app-android-4c845-default-rtdb.firebaseio.com/' + userName + '.json',
+                url: 'https://thietbibaochay-v2-default-rtdb.firebaseio.com/' + userName + '.json',
                 type: 'GET',
                 dataType: 'json',
                 success: function (responseData) {
@@ -166,7 +166,7 @@ function getAllValuesAndCallApiCreateUser(message, formDataJson) {
 
     // Gọi API để cập nhật dữ liệu trên server
     $.ajax({
-        url: 'https://database-app-android-4c845-default-rtdb.firebaseio.com/' + usernameReg + '.json',
+        url: 'https://thietbibaochay-v2-default-rtdb.firebaseio.com/' + usernameReg + '.json',
         type: 'PUT',
         contentType: 'application/json',
         data: JSON.stringify(values),
@@ -176,7 +176,7 @@ function getAllValuesAndCallApiCreateUser(message, formDataJson) {
             frmInfoReg.find('input, textarea, select').val('');
             frmInfoReg.click();
             $.ajax({
-                url: 'https://database-app-android-4c845-default-rtdb.firebaseio.com/config.json',
+                url: 'https://thietbibaochay-v2-default-rtdb.firebaseio.com/config.json',
                 type: 'PUT',
                 contentType: 'application/json',
                 data: JSON.stringify({
@@ -205,8 +205,7 @@ function getAllValues() {
 
     // Duyệt qua mảng các ID và lấy giá trị từ các thẻ tương ứng
     var ids = [
-        'area1', 'area2', 'area3', 'area4', 'area5',
-        'area6', 'area7', 'area8', 'sos', 'alert', 'temperature', 'fullname', 'username', 'password'
+        'temperature','gas','antiTheft','pump','buttonRemote','fullname','password','username'
     ];
 
     for (var i = 0; i < ids.length; i++) {
@@ -215,7 +214,11 @@ function getAllValues() {
         values[id] = value;
 
         if (value === undefined) {
-            if (id == 'temperature' || id == 'fullname' || id == 'username' || id == 'password') {
+            if (
+                id == 'temperature' || 
+                id == 'gas' || id == 'fullname' || 
+                id == 'username' || id == 'password'
+            ) {
                 values[id] = 'N/A';
             } else {
                 values[id] = 'false';
@@ -255,7 +258,7 @@ btnChangeReg.click(async function (e) {
         // Wrap the jQuery AJAX call in a Promise
         const data = await new Promise((resolve, reject) => {
             $.ajax({
-                url: 'https://database-app-android-4c845-default-rtdb.firebaseio.com/config.json',
+                url: 'https://thietbibaochay-v2-default-rtdb.firebaseio.com/config.json',
                 type: 'GET',
                 dataType: 'json',
                 success: function (responseData) {
