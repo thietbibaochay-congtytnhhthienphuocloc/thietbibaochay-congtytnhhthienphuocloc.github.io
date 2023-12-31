@@ -14,7 +14,16 @@ body {
   background-color: #d1ecf1;
   padding: 10px;
   margin-top: 20px;
-  width: 180px;
+  min-width: 180px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  font-weight: bold;
+}
+
+.gas-box {
+  background-color: #d1ecf1;
+  padding: 10px;
+  margin-top: 20px;
+  min-width: 180px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   font-weight: bold;
 }
@@ -34,6 +43,7 @@ body {
   font-size: 1em;
   height: 100% !important;
   padding: 0;
+  font-weight: bold;
 }
 
 .btn-alert {
@@ -155,6 +165,14 @@ body {
   transform-origin: 9.5px 2.4781px;
 }
 
+.btn-sos.turn-on {
+  animation: blink 1s infinite;
+}
+
+.btn-sos.turn-on img {
+  animation: shake 2s infinite;
+}
+
 .btn-alert.turn-on .bell-whole {
   animation: ring 2s linear infinite;
   transform-origin: 9.5px 2.4781px;
@@ -170,6 +188,11 @@ body {
 
 .btn-alert .bell-part {
   fill: currentColor;
+}
+
+.btn-alert.turn-on {
+  fill: red!important;
+  animation: blink 1s infinite, shake 2s infinite;
 }
 
 .btn-sos.turn-on {

@@ -6,14 +6,15 @@ if (!localStorage.getItem("isLogin")) {
 var keyUser = localStorage.getItem("isLogin");
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBckkNHIvMoIgxIHt_3HOTlMcso2V2uN_Q",
-    authDomain: "database-app-android-4c845.firebaseapp.com",
-    databaseURL: "https://database-app-android-4c845-default-rtdb.firebaseio.com",
-    projectId: "database-app-android-4c845",
-    storageBucket: "database-app-android-4c845.appspot.com",
-    messagingSenderId: "596263588445",
-    appId: "1:596263588445:web:ef8e05eee6120f71eeb3b4"
+    apiKey: "AIzaSyADt9h0r8XB1VFvhpkfCcW41Fz7GFfjrPk",
+    authDomain: "thietbibaochay-v2.firebaseapp.com",
+    databaseURL: "https://thietbibaochay-v2-default-rtdb.firebaseio.com",
+    projectId: "thietbibaochay-v2",
+    storageBucket: "thietbibaochay-v2.appspot.com",
+    messagingSenderId: "859661221744",
+    appId: "1:859661221744:web:8a7e87d64c4def076b19b5"
 };
+
 // Khởi tạo Firebase
 firebase.initializeApp(firebaseConfig);
 
@@ -39,27 +40,28 @@ $(document).ready(function () {
         containerContent.show();
     }, 1000);
 });
-function toggleButton(button) {
-    // Kiểm tra xem button có lớp bật hay không không
-    var isOn = button.classList.contains('turn-on');
-    var id = $('#' + button.id);
-    var message = "Hệ thống đang bảo trì, vui lòng thử lại sau!";
 
-    // bật 
-    if (!isOn) {
-        button.classList.add('turn-on');
+function toggleButton(button, status) {
+    // Kiểm tra xem button có lớp bật hay không không
+    var id      = $('#buttonRemote');
+    var btnON   = $('#buttonRemoteON');
+    var btnOFF  = $('#buttonRemoteOFF');
+    var message = "Hệ thống đang bảo trì, vui lòng thử lại sau!";
+    if (status === 'on') {
+        btnON.addClass('turn-on');
+        btnOFF.removeClass('turn-on');
         id.attr("value", true);
-        message = "Bật cảnh báo " + id.attr("text-title") + " thành công";
-        playAudio(audioSOS, './mp3/sos.mp3');
-    } else {
-        button.classList.remove('turn-on');
+    } else{
+        btnON.removeClass('turn-on');
+        btnOFF.addClass('turn-on');
         id.attr("value", false);
-        message = "Tắt cảnh báo " + id.attr("text-title") + " thành công";
-        stopAudio(audioSOS);
     }
     getAllValuesAndCallApi(message);
 }
+
 function applyButtonStates(data) {
+    const lstAlertVolumn = ["temperatureAlert", "gasAlert", "antiTheft"];
+    var isAlertVolumn = false;
     // Duyệt qua các key trong data và áp dụng trạng thái lên các button
     for (var key in data) {
         if (data.hasOwnProperty(key)) {
@@ -67,7 +69,7 @@ function applyButtonStates(data) {
             var button = $(buttonId);
 
             // Kiểm tra giá trị của key và thêm/loại bỏ lớp turn-on
-            if (data[key] === "true") {
+            if (data[key] === "true" || data[key] === true) {
                 button.addClass('turn-on');
             } else {
                 button.removeClass('turn-on');
@@ -75,35 +77,48 @@ function applyButtonStates(data) {
 
             // hiện text 
             if (key === "temperature") {
-                $('#temperature').html(`NHIỆT ĐỘ: ${data.temperature} độ C`);
+                $('#temperature').html(`NHIỆT ĐỘ: ${data.temperature}`);
             }
+            if (key === "gas") {
+                $('#gas').html(`Khí Gas: ${data.gas}`);
+            }
+
             if (key === "fullname" || key == "username") {
                 $(buttonId).html(data[key]);
+            }
+            if (key === "buttonRemote") {
+                var btnON   = $('#buttonRemoteON');
+                var btnOFF  = $('#buttonRemoteOFF');
+                if (data[key] == "true" || data[key] == true) {
+                    btnON.addClass('turn-on');
+                    btnOFF.removeClass('turn-on');
+                } else{
+                    btnON.removeClass('turn-on');
+                    btnOFF.addClass('turn-on');
+                }
             }
 
             $('#' + key).attr('value', data[key]);
 
             //bật tắt âm thanh
-            if (key === "sos" && data[key] == "true") {
-                playAudio(audioSOS, './mp3/sos.mp3');
-            } else if (key === "sos" && data[key] == "false") {
-                stopAudio(audioSOS);
-            }
-            if (key === "alert" && data[key] == "true") {
+            if (
+                lstAlertVolumn.includes(key)
+                && (data[key] == "true" || data[key] == true)
+            ) {
                 playAudio(audioAlert, './mp3/alert.mp3');
-            } else if (key === "alert" && data[key] == "false") {
-                stopAudio(audioAlert);
+                isAlertVolumn = true;
             }
         }
     }
+    if(!isAlertVolumn) stopAudio(audioAlert);
 }
 function getAllValues() {
     var values = {};
 
     // Duyệt qua mảng các ID và lấy giá trị từ các thẻ tương ứng
     var ids = [
-        'area1', 'area2', 'area3', 'area4', 'area5',
-        'area6', 'area7', 'area8', 'sos', 'alert', 'temperature', 'fullname', 'username', 'password'
+        'temperature','gas','temperatureAlert' ,'gasAlert', 'antiTheft','pump'
+        ,'buttonRemote','fullname','password','username'
     ];
 
     for (var i = 0; i < ids.length; i++) {
@@ -112,14 +127,17 @@ function getAllValues() {
         values[id] = value;
 
         if (value === undefined) {
-            if (id == 'temperature' || id == 'fullname' || id == 'username' || id == 'password') {
+            if (
+                id == 'temperature' || 
+                id == 'gas' || id == 'fullname' || 
+                id == 'username' || id == 'password'
+            ) {
                 values[id] = 'N/A';
             } else {
                 values[id] = 'false';
             }
         }
     }
-
     return values;
 }
 function getAllValuesAndCallApi(message) {
@@ -132,18 +150,18 @@ function getAllValuesAndCallApi(message) {
 
     // Gọi API để cập nhật dữ liệu trên server
     $.ajax({
-        url: 'https://database-app-android-4c845-default-rtdb.firebaseio.com/' + keyUser + '.json',
+        url: 'https://thietbibaochay-v2-default-rtdb.firebaseio.com/' + keyUser + '.json',
         type: 'PUT',
         contentType: 'application/json',
         data: JSON.stringify(values),
         success: function (response) {
-            Swal.fire({
-                position: "center",
-                icon: "success",
-                title: message,
-                showConfirmButton: false,
-                timer: 1500
-            });
+            // Swal.fire({
+            //     position: "center",
+            //     icon: "success",
+            //     title: message,
+            //     showConfirmButton: false,
+            //     timer: 1500
+            // });
         },
         error: function (error) {
             console.error('Error updating data:', error);
@@ -165,9 +183,14 @@ function playAudio(audioObject, linkMp3) {
             this.currentTime = 0;
             this.play();
         }, false);
+    } else if (!audioObject.audio.paused) {
+        // Nếu âm thanh đang chạy, dừng nó trước khi chạy lại
+        audioObject.audio.pause();
+        audioObject.audio.currentTime = 0;
     }
     audioObject.audio.play();
 }
+
 
 function stopAudio(audioObject) {
     if (audioObject.audio && !audioObject.audio.paused) {
@@ -241,7 +264,7 @@ async function validatePassOld(formDataJson) {
         // Wrap the jQuery AJAX call in a Promise
         const data = await new Promise((resolve, reject) => {
             $.ajax({
-                url: 'https://database-app-android-4c845-default-rtdb.firebaseio.com/' + keyUser + '.json',
+                url: 'https://thietbibaochay-v2-default-rtdb.firebaseio.com/' + keyUser + '.json',
                 type: 'GET',
                 dataType: 'json',
                 success: function (responseData) {
@@ -277,7 +300,7 @@ function getAllValuesAndCallApiUpdateInfo(message, formDataJson) {
     
     // Gọi API để cập nhật dữ liệu trên server
     $.ajax({
-        url: 'https://database-app-android-4c845-default-rtdb.firebaseio.com/' + keyUser + '.json',
+        url: 'https://thietbibaochay-v2-default-rtdb.firebaseio.com/' + keyUser + '.json',
         type: 'PUT',
         contentType: 'application/json',
         data: JSON.stringify(values),
