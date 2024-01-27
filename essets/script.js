@@ -41,21 +41,14 @@ $(document).ready(function () {
     }, 1000);
 });
 
-function toggleButton(button, status) {
+function toggleButton(button, id) {
     // Kiểm tra xem button có lớp bật hay không không
-    var id      = $('#buttonRemote');
-    var btnON   = $('#buttonRemoteON');
-    var btnOFF  = $('#buttonRemoteOFF');
+    var idBtn   = $('#' + id);
     var message = "Hệ thống đang bảo trì, vui lòng thử lại sau!";
-    if (status === 'on') {
-        btnON.addClass('turn-on');
-        btnOFF.removeClass('turn-on');
-        id.attr("value", true);
-    } else{
-        btnON.removeClass('turn-on');
-        btnOFF.addClass('turn-on');
-        id.attr("value", false);
-    }
+    
+    idBtn.addClass('turn-on');
+    idBtn.attr("value", true);
+
     getAllValuesAndCallApi(message);
 }
 
@@ -86,15 +79,12 @@ function applyButtonStates(data) {
             if (key === "fullname" || key == "username") {
                 $(buttonId).html(data[key]);
             }
-            if (key === "buttonRemote") {
-                var btnON   = $('#buttonRemoteON');
-                var btnOFF  = $('#buttonRemoteOFF');
+            if (key === "buttonRemoteON" || key === "buttonRemoteOFF") {
+                var idBtn   = $('#'+ key);
                 if (data[key] == "true" || data[key] == true) {
-                    btnON.addClass('turn-on');
-                    btnOFF.removeClass('turn-on');
+                    idBtn.addClass('turn-on');
                 } else{
-                    btnON.removeClass('turn-on');
-                    btnOFF.addClass('turn-on');
+                    idBtn.removeClass('turn-on');
                 }
             }
 
@@ -118,7 +108,7 @@ function getAllValues() {
     // Duyệt qua mảng các ID và lấy giá trị từ các thẻ tương ứng
     var ids = [
         'temperature','gas','temperatureAlert' ,'gasAlert', 'antiTheft','pump'
-        ,'buttonRemote','fullname','password','username'
+        ,'buttonRemoteON','buttonRemoteOFF','fullname','password','username'
     ];
 
     for (var i = 0; i < ids.length; i++) {

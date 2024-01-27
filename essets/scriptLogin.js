@@ -205,7 +205,7 @@ function getAllValues() {
 
     // Duyệt qua mảng các ID và lấy giá trị từ các thẻ tương ứng
     var ids = [
-        'temperature','gas','temperatureAlert' ,'gasAlert', 'antiTheft','pump','buttonRemote','fullname','password','username'
+        'temperature','gas','temperatureAlert' ,'gasAlert', 'antiTheft','pump','buttonRemoteON','buttonRemoteOFF','fullname','password','username'
     ];
 
     for (var i = 0; i < ids.length; i++) {
