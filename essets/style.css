@@ -149,6 +149,9 @@ body {
   height: 60px;
   margin: auto;
 }
+.not-border {
+ border-radius: .3rem!important;
+}
 
 .btn-alert svg {
   width: 65px;
@@ -342,7 +345,10 @@ body {
   margin-bottom: 20px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-
+.group-area-zone{
+  margin-top: 25px!important;
+  margin-bottom: 0px!important;
+}
 
 /* csss page setting  */
 

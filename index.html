@@ -44,8 +44,7 @@
     <div class="container container-content" style="display: none;">
         <div class="row">
             <!-- Tab  -->
-            <ul class="col-12 nav nav-tabs nav-custom"
-            id="myTab" role="tablist">
+            <ul class="col-12 nav nav-tabs nav-custom" id="myTab" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
                         aria-controls="home" aria-selected="false">
@@ -74,55 +73,114 @@
                         <h1 class="title-company">CÔNG TY TNHH THIÊN PHƯỚC LỘC</h1>
                     </div>
                     <p class="title-app" style="background-color: #FBBE0E;">THIẾT BỊ BÁO CHÁY</p>
-                    <div class="d-flex mt-5">
-                        <div class="custom-border temperature-box mx-auto" id="temperature">NHIỆT ĐỘ: N/A</div>
-                    </div>
-                    <div class="d-flex ">
-                        <div class="custom-border gas-box mx-auto" id="gas">Khí Gas: N/A</div>
-                    </div>
-                    
-
-                    <div class="row action-buttons mt-5">
-                        <div class="col-6 mb-5">
-                            <b>Nhiệt độ</b>
-                            <button type="button" class="btn btn-default btn-lg btn-block btn-alert" id="temperatureAlert"
-                                text-title="Cảnh báo nhiệt độ">
-                              <svg xmlns="http://www.w3.org/2000/svg" style="width: 30px;height: 60px;"  viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M416 64a32 32 0 1 1 0 64 32 32 0 1 1 0-64zm0 128A96 96 0 1 0 416 0a96 96 0 1 0 0 192zM96 112c0-26.5 21.5-48 48-48s48 21.5 48 48V276.5c0 17.3 7.1 31.9 15.3 42.5C217.8 332.6 224 349.5 224 368c0 44.2-35.8 80-80 80s-80-35.8-80-80c0-18.5 6.2-35.4 16.7-48.9C88.9 308.4 96 293.8 96 276.5V112zM144 0C82.1 0 32 50.2 32 112V276.5c0 .1-.1 .3-.2 .6c-.2 .6-.8 1.6-1.7 2.8C11.2 304.2 0 334.8 0 368c0 79.5 64.5 144 144 144s144-64.5 144-144c0-33.2-11.2-63.8-30.1-88.1c-.9-1.2-1.5-2.2-1.7-2.8c-.1-.3-.2-.5-.2-.6V112C256 50.2 205.9 0 144 0zm0 416c26.5 0 48-21.5 48-48c0-20.9-13.4-38.7-32-45.3V112c0-8.8-7.2-16-16-16s-16 7.2-16 16V322.7c-18.6 6.6-32 24.4-32 45.3c0 26.5 21.5 48 48 48z"/></svg>
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="d-flex mt-3">
+                                <div class="custom-border temperature-box mx-auto" id="temperature">NHIỆT ĐỘ: N/A</div>
+                            </div>
+                            <div class="d-flex ">
+                                <div class="custom-border gas-box mx-auto" id="gas">Khí Gas: N/A</div>
+                            </div>
+                        </div>
+                        <div class="col-4 d-flex">
+                            <button type="button" class="btn btn-default btn-lg btn-block btn-alert not-border" id=""
+                                text-title="SOS">
+                                <b>SOS</b>
                             </button>
                         </div>
-                        <div class="col-6 mb-5">
+                    </div>
+
+
+                    <div class="row action-buttons mt-3">
+                        <div class="col-6 mb-3">
+                            <b>Nhiệt độ</b>
+                            <button type="button" class="btn btn-default btn-lg btn-block btn-alert"
+                                id="temperatureAlert" text-title="Cảnh báo nhiệt độ">
+                                <svg xmlns="http://www.w3.org/2000/svg" style="width: 30px;height: 60px;"
+                                    viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                                    <path
+                                        d="M416 64a32 32 0 1 1 0 64 32 32 0 1 1 0-64zm0 128A96 96 0 1 0 416 0a96 96 0 1 0 0 192zM96 112c0-26.5 21.5-48 48-48s48 21.5 48 48V276.5c0 17.3 7.1 31.9 15.3 42.5C217.8 332.6 224 349.5 224 368c0 44.2-35.8 80-80 80s-80-35.8-80-80c0-18.5 6.2-35.4 16.7-48.9C88.9 308.4 96 293.8 96 276.5V112zM144 0C82.1 0 32 50.2 32 112V276.5c0 .1-.1 .3-.2 .6c-.2 .6-.8 1.6-1.7 2.8C11.2 304.2 0 334.8 0 368c0 79.5 64.5 144 144 144s144-64.5 144-144c0-33.2-11.2-63.8-30.1-88.1c-.9-1.2-1.5-2.2-1.7-2.8c-.1-.3-.2-.5-.2-.6V112C256 50.2 205.9 0 144 0zm0 416c26.5 0 48-21.5 48-48c0-20.9-13.4-38.7-32-45.3V112c0-8.8-7.2-16-16-16s-16 7.2-16 16V322.7c-18.6 6.6-32 24.4-32 45.3c0 26.5 21.5 48 48 48z" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="col-6 mb-3">
                             <b>Khí Gas</b>
                             <button type="button" class="btn btn-default btn-lg btn-block btn-alert" id="gasAlert"
                                 text-title="Cảnh báo khí Gas">
-                                <svg xmlns="http://www.w3.org/2000/svg" style="width: 30px;height: 60px;"  viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M32 64C32 28.7 60.7 0 96 0H256c35.3 0 64 28.7 64 64V256h8c48.6 0 88 39.4 88 88v32c0 13.3 10.7 24 24 24s24-10.7 24-24V222c-27.6-7.1-48-32.2-48-62V96L384 64c-8.8-8.8-8.8-23.2 0-32s23.2-8.8 32 0l77.3 77.3c12 12 18.7 28.3 18.7 45.3V168v24 32V376c0 39.8-32.2 72-72 72s-72-32.2-72-72V344c0-22.1-17.9-40-40-40h-8V448c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32V64zM96 80v96c0 8.8 7.2 16 16 16H240c8.8 0 16-7.2 16-16V80c0-8.8-7.2-16-16-16H112c-8.8 0-16 7.2-16 16z"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" style="width: 30px;height: 60px;"
+                                    viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                                    <path
+                                        d="M32 64C32 28.7 60.7 0 96 0H256c35.3 0 64 28.7 64 64V256h8c48.6 0 88 39.4 88 88v32c0 13.3 10.7 24 24 24s24-10.7 24-24V222c-27.6-7.1-48-32.2-48-62V96L384 64c-8.8-8.8-8.8-23.2 0-32s23.2-8.8 32 0l77.3 77.3c12 12 18.7 28.3 18.7 45.3V168v24 32V376c0 39.8-32.2 72-72 72s-72-32.2-72-72V344c0-22.1-17.9-40-40-40h-8V448c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32V64zM96 80v96c0 8.8 7.2 16 16 16H240c8.8 0 16-7.2 16-16V80c0-8.8-7.2-16-16-16H112c-8.8 0-16 7.2-16 16z" />
+                                </svg>
                             </button>
                         </div>
                         <div class="col-6">
                             <b>Chuông</b>
                             <button type="button" class="btn btn-default btn-lg btn-block btn-alert" id="antiTheft"
                                 text-title="Cảnh báo chuông">
-                                <svg xmlns="http://www.w3.org/2000/svg" style="width: 30px;height: 60px;" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M224 0c-17.7 0-32 14.3-32 32V51.2C119 66 64 130.6 64 208v18.8c0 47-17.3 92.4-48.5 127.6l-7.4 8.3c-8.4 9.4-10.4 22.9-5.3 34.4S19.4 416 32 416H416c12.6 0 24-7.4 29.2-18.9s3.1-25-5.3-34.4l-7.4-8.3C401.3 319.2 384 273.9 384 226.8V208c0-77.4-55-142-128-156.8V32c0-17.7-14.3-32-32-32zm45.3 493.3c12-12 18.7-28.3 18.7-45.3H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7z"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" style="width: 30px;height: 60px;"
+                                    viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                    <path
+                                        d="M224 0c-17.7 0-32 14.3-32 32V51.2C119 66 64 130.6 64 208v18.8c0 47-17.3 92.4-48.5 127.6l-7.4 8.3c-8.4 9.4-10.4 22.9-5.3 34.4S19.4 416 32 416H416c12.6 0 24-7.4 29.2-18.9s3.1-25-5.3-34.4l-7.4-8.3C401.3 319.2 384 273.9 384 226.8V208c0-77.4-55-142-128-156.8V32c0-17.7-14.3-32-32-32zm45.3 493.3c12-12 18.7-28.3 18.7-45.3H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7z" />
+                                </svg>
                             </button>
                         </div>
                         <div class="col-6">
                             <b>Bơm</b>
                             <button type="button" class="btn btn-default btn-lg btn-block btn-alert" id="pump"
                                 text-title="Cảnh báo bơm">
-                                <svg xmlns="http://www.w3.org/2000/svg" style="width: 30px;height: 60px;"   viewBox="0 0 19 19">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M304 40l-4.1 38.2-5.7 52.7c9.4-4 18.9-6.9 28.5-8.6c7-1.2 14-1.9 21-2.2c79-2.9 151.9 53.9 167.7 132.1c.5 2.5 .7 5.1 .7 7.7V264c0 22.1-17.9 40-40 40l-38.2-4.1-52.7-5.7c4 9.4 6.9 18.9 8.6 28.5c1.2 7 1.9 14 2.2 21c2.9 79-53.9 151.9-132.1 167.7c-2.5 .5-5.1 .7-7.7 .7H248c-22.1 0-40-17.9-40-40l4.1-38.2 5.7-52.7c-9.4 4-18.9 6.9-28.5 8.6c-7 1.2-14 1.9-21 2.2C89.4 394.8 16.4 338 .7 259.8c-.5-2.5-.7-5.1-.7-7.7V248c0-22.1 17.9-40 40-40l38.2 4.1 52.7 5.7c-4-9.4-6.9-18.9-8.6-28.5c-1.2-7-1.9-14-2.2-21C117.2 89.4 174 16.4 252.2 .7c2.5-.5 5.1-.7 7.7-.7H264c22.1 0 40 17.9 40 40zm82.3 206.5l76.3 8.3c-15.2-56.4-73.6-95.1-131.8-85.1c-5.5 .9-11.4 2.7-17.8 5.4c-15.7 6.7-33.7 4.6-47.4-5.6s-21-26.8-19.2-43.7l8.3-76.3c-56.4 15.2-95.1 73.6-85.1 131.8c.9 5.5 2.7 11.4 5.4 17.8c6.7 15.7 4.6 33.7-5.6 47.4s-26.8 21-43.7 19.2l-76.3-8.3c15.2 56.4 73.6 95.1 131.8 85.1c5.5-.9 11.4-2.7 17.8-5.4c15.7-6.7 33.7-4.6 47.4 5.6s21 26.8 19.2 43.7l-8.3 76.3c56.4-15.2 95.1-73.6 85.1-131.8c-.9-5.5-2.7-11.4-5.4-17.8c-6.7-15.7-4.6-33.7 5.6-47.4s26.8-21 43.7-19.2zM256 224a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" style="width: 30px;height: 60px;"
+                                    viewBox="0 0 19 19">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                                        <path
+                                            d="M304 40l-4.1 38.2-5.7 52.7c9.4-4 18.9-6.9 28.5-8.6c7-1.2 14-1.9 21-2.2c79-2.9 151.9 53.9 167.7 132.1c.5 2.5 .7 5.1 .7 7.7V264c0 22.1-17.9 40-40 40l-38.2-4.1-52.7-5.7c4 9.4 6.9 18.9 8.6 28.5c1.2 7 1.9 14 2.2 21c2.9 79-53.9 151.9-132.1 167.7c-2.5 .5-5.1 .7-7.7 .7H248c-22.1 0-40-17.9-40-40l4.1-38.2 5.7-52.7c-9.4 4-18.9 6.9-28.5 8.6c-7 1.2-14 1.9-21 2.2C89.4 394.8 16.4 338 .7 259.8c-.5-2.5-.7-5.1-.7-7.7V248c0-22.1 17.9-40 40-40l38.2 4.1 52.7 5.7c-4-9.4-6.9-18.9-8.6-28.5c-1.2-7-1.9-14-2.2-21C117.2 89.4 174 16.4 252.2 .7c2.5-.5 5.1-.7 7.7-.7H264c22.1 0 40 17.9 40 40zm82.3 206.5l76.3 8.3c-15.2-56.4-73.6-95.1-131.8-85.1c-5.5 .9-11.4 2.7-17.8 5.4c-15.7 6.7-33.7 4.6-47.4-5.6s-21-26.8-19.2-43.7l8.3-76.3c-56.4 15.2-95.1 73.6-85.1 131.8c.9 5.5 2.7 11.4 5.4 17.8c6.7 15.7 4.6 33.7-5.6 47.4s-26.8 21-43.7 19.2l-76.3-8.3c15.2 56.4 73.6 95.1 131.8 85.1c5.5-.9 11.4-2.7 17.8-5.4c15.7-6.7 33.7-4.6 47.4 5.6s21 26.8 19.2 43.7l-8.3 76.3c56.4-15.2 95.1-73.6 85.1-131.8c-.9-5.5-2.7-11.4-5.4-17.8c-6.7-15.7-4.6-33.7 5.6-47.4s26.8-21 43.7-19.2zM256 224a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" />
+                                    </svg>
                                 </svg>
                             </button>
                         </div>
                     </div>
-                    <div class="row action-buttons d-flex">
+                    <div class="row d-flex">
+                        <div class="col-12">
+                            <div class="group-area group-area-zone">
+                                <div class="col-3">
+                                    <button type="button" class="btn btn-default btn-lg btn-block btn-alert not-border"
+                                        id="temperatureAlert" text-title="Cảnh báo Vùng 1">
+                                        <b>Vùng<br /> 1</b>
+                                    </button>
+                                </div>
+                                <div class="col-3">
+                                    <button type="button" class="btn btn-default btn-lg btn-block btn-alert not-border"
+                                        id="gasAlert" text-title="Cảnh báo Vùng 2">
+                                        <b>Vùng<br /> 2</b>
+                                    </button>
+                                </div>
+                                <div class="col-3">
+                                    <button type="button" class="btn btn-default btn-lg btn-block btn-alert not-border"
+                                        id="antiTheft" text-title="Cảnh báo Vùng 3">
+                                        <b>Vùng<br /> 3</b>
+                                    </button>
+                                </div>
+                                <div class="col-3">
+                                    <button type="button" class="btn btn-default btn-lg btn-block btn-alert not-border"
+                                        id="pump" text-title="Cảnh báo Vùng 4">
+                                        <b>Vùng<br /> 4</b>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row d-flex">
                         <div class="col-12 mt-4">
                             <div class=" group-area">
                                 <div class="col-md-6 col-6 mb-6">
-                                    <button type="button" onclick="toggleButton(this, 'buttonRemoteON')" id="buttonRemoteON" class="btn btn-default btn-lg btn-block btn-custom" 
+                                    <button type="button" onclick="toggleButton(this, 'buttonRemoteON')"
+                                        id="buttonRemoteON" class="btn btn-default btn-lg btn-block btn-custom"
                                         text-title="ON">ON</button>
                                 </div>
                                 <div class="col-md-6 col-6 mb-6">
-                                    <button type="button" onclick="toggleButton(this, 'buttonRemoteOFF')" id="buttonRemoteOFF" class="btn btn-default btn-lg btn-block btn-custom" 
+                                    <button type="button" onclick="toggleButton(this, 'buttonRemoteOFF')"
+                                        id="buttonRemoteOFF" class="btn btn-default btn-lg btn-block btn-custom"
                                         text-title="OFF">OFF</button>
                                 </div>
                             </div>
@@ -143,11 +201,11 @@
                                 </div>
                                 <div>
                                     <div class="non-active-form">
-                                       Username<p class="capitalize" id="username">N/A</p><i class="fas fa-pen"></i>
+                                        Username<p class="capitalize" id="username">N/A</p><i class="fas fa-pen"></i>
                                     </div>
                                     <div class="non-active-form d-none">
                                         Username<p class="capitalize" id="password"></p><i class="fas fa-pen"></i>
-                                     </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="settings-section">
@@ -156,33 +214,34 @@
                                     <div class="form-group">
                                         <div class="input-group">
                                             <input name="fullnameEdit" placeholder="Họ và tên" type="text"
-                                                class="form-control"  value="">
+                                                class="form-control" value="">
                                             <span class="focus-input"></span>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="input-group">
                                             <input name="passwordOldEdit" placeholder="Nhập mật khẩu cũ" type="password"
-                                                class="form-control"  value="">
+                                                class="form-control" value="">
                                             <span class="focus-input"></span>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <input name="passwordNewEdit" placeholder="Nhập mật khẩu mới" type="password"
-                                                class="form-control"  value="">
+                                            <input name="passwordNewEdit" placeholder="Nhập mật khẩu mới"
+                                                type="password" class="form-control" value="">
                                             <span class="focus-input"></span>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <input name="passwordNewConfirmEdit" placeholder="Xác nhận mật khẩu mới" type="password"
-                                                class="form-control"  value="">
+                                            <input name="passwordNewConfirmEdit" placeholder="Xác nhận mật khẩu mới"
+                                                type="password" class="form-control" value="">
                                             <span class="focus-input"></span>
                                         </div>
                                     </div>
                                     <div class="form-submit right">
-                                        <button type="button" class="btn button full btn-danger mr-5 " id="btnLogout" >Đăng xuất</button>
+                                        <button type="button" class="btn button full btn-danger mr-5 "
+                                            id="btnLogout">Đăng xuất</button>
                                         <button class="btn button full ml-5" id="btnChangeInfo">Thay đổi</button>
                                     </div>
                                 </form>
