@@ -46,6 +46,10 @@ body {
   font-weight: bold;
 }
 
+.btn-custom-sos {
+  animation: unset!important;
+}
+
 .btn-alert {
   border-radius: 50%;
 }

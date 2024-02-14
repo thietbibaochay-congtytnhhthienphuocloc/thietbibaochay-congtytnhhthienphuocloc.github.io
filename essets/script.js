@@ -42,18 +42,34 @@ $(document).ready(function () {
 });
 
 function toggleButton(button, id) {
+
     // Kiểm tra xem button có lớp bật hay không không
     var idBtn   = $('#' + id);
     var message = "Hệ thống đang bảo trì, vui lòng thử lại sau!";
     
-    idBtn.addClass('turn-on');
-    idBtn.attr("value", true);
+    if(id == 'sos'){
+        if (idBtn.attr("value") == 'true') {
+            idBtn.removeClass('turn-on');
+            idBtn.attr("value", false);
 
+        }else{
+            idBtn.addClass('turn-on');
+            idBtn.attr("value", true);
+        }
+        
+    }else{
+        idBtn.addClass('turn-on');
+        idBtn.attr("value", true);
+       
+    }
     getAllValuesAndCallApi(message);
 }
 
 function applyButtonStates(data) {
-    const lstAlertVolumn = ["temperatureAlert", "gasAlert", "antiTheft"];
+    const lstAlertVolumn =  [ 
+                                "temperatureAlert", "gasAlert", "antiTheft",
+                                "zone1", "zone2", "zone3", "zone4"
+                            ];
     var isAlertVolumn = false;
     // Duyệt qua các key trong data và áp dụng trạng thái lên các button
     for (var key in data) {
@@ -108,7 +124,8 @@ function getAllValues() {
     // Duyệt qua mảng các ID và lấy giá trị từ các thẻ tương ứng
     var ids = [
         'temperature','gas','temperatureAlert' ,'gasAlert', 'antiTheft','pump'
-        ,'buttonRemoteON','buttonRemoteOFF','fullname','password','username'
+        ,'buttonRemoteON','buttonRemoteOFF','fullname','password','username',
+        'sos', 'zone1', 'zone2', 'zone3', 'zone4',
     ];
 
     for (var i = 0; i < ids.length; i++) {
