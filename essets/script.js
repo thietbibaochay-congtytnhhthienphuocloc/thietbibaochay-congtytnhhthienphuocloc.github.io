@@ -67,7 +67,7 @@ function toggleButton(button, id) {
 
 function applyButtonStates(data) {
     const lstAlertVolumn =  [ 
-                                "temperatureAlert", "gasAlert", "antiTheft",
+                                "temperatureAlert", "gasAlert", "antiTheft", "pump",
                                 "zone1", "zone2", "zone3", "zone4"
                             ];
     var isAlertVolumn = false;
